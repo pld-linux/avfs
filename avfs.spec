@@ -19,7 +19,7 @@ or compressed files, or access remote files without recompiling the
 programs or changing the kernel.
 
 At the moment it supports floppies, tar and gzip files, zip, bzip2, ar
-and rar files, ftp sessions, http, webdav, rsh/rcp, ssh/scp. Quite a
+and rar files, FTP sessions, http, webdav, rsh/rcp, ssh/scp. Quite a
 few other handlers are implemented with the Midnight Commander's
 external FS.
 
@@ -29,7 +29,7 @@ zarchiwizowanych lub skompresowanych plików lub dostêp do zdanych
 plików bez rekompilacji programów lub zmiany j±dra.
 
 Aktualnie obs³uguje dyskietki, pliki tar, gzip, zip, bzip2, ar i rar,
-sesje ftp, http, webdav, rsh/rcp, ssh/scp. Jest te¿ trochê innych
+sesje FTP, http, webdav, rsh/rcp, ssh/scp. Jest te¿ trochê innych
 procedur obs³ugi zaimplementowanych z u¿yciem extfs (zewnêtrznych
 systemów plików) Midnight Commandera.
 
