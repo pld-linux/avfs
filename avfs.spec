@@ -37,7 +37,7 @@ systemów plików) Midnight Commandera.
 %setup -q
 
 %build
-install %{_datadir}/automake/config.* .
+install /usr/share/automake/config.* .
 %configure2_13 \
 	--enable-preload \
 	--enable-xml \
