@@ -10,7 +10,7 @@ Source0:	http://dl.sourceforge.net/avf/%{name}-%{version}.tar.gz
 URL:		http://sourceforge.net/projects/avf/
 BuildRequires:	automake
 BuildRequires:	neon-devel
-BuildRequires:	openssl-devel
+BuildRequires:	openssl-devel >= 0.9.7d
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
