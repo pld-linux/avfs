@@ -1,14 +1,18 @@
+# TODO
+# do --enable-dav switch
+
 Summary:	AFS - A Virtual Filesystem
 Summary(pl):	AFS - wirtualny system plików
 Name:		avfs
-Version:	0.9.3
-Release:	1
+Version:	0.9.6
+Release:	0.1
 License:	GPL
 Group:		Libraries
-# Source0-md5:	1b8087516b1abc9965056d1f4595c4f0
 Source0:	http://dl.sourceforge.net/avf/%{name}-%{version}.tar.gz
+# Source0-md5:	59829701fb2d7593ed7c1de9e0a5ac63
 URL:		http://sourceforge.net/projects/avf/
 BuildRequires:	automake
+BuildRequires:	expat-devel
 BuildRequires:	neon-devel
 BuildRequires:	openssl-devel >= 0.9.7d
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -38,17 +42,23 @@ systemów plików) Midnight Commandera.
 
 %build
 install /usr/share/automake/config.* .
-%configure2_13 \
+
+%configure \
 	--enable-preload \
 	--enable-xml \
-	--enable-dav \
 	--with-neon \
 	--with-ssl \
 	--with-kernel=%{_kernelsrcdir}
+#        --enable-dav 
+# Comment:
+# I've no idea how to build this package with dav option with expat-devel.
 %{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
+
+%{__make} install \
+        DESTDIR=$RPM_BUILD_ROOT
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -58,5 +68,10 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc README CHANGES CREDITS
-%attr(755,root,root) %{_libdir}/lib*.so.*.*
+%doc README
+%attr(755,root,root) %{_libdir}/*.so.*.*
+%attr(755,root,root) %{_bindir}/davpass
+%attr(755,root,root) %{_bindir}/ftppass
+%{_libdir}/%{name}
+%{_libdir}/avfs_preload.a
+%{_libdir}/avfs_preload.la
