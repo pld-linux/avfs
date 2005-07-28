@@ -73,5 +73,3 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/davpass
 %attr(755,root,root) %{_bindir}/ftppass
 %{_libdir}/%{name}
-%{_libdir}/avfs_preload.a
-%{_libdir}/avfs_preload.la
