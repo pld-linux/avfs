@@ -4,12 +4,12 @@
 Summary:	AFS - A Virtual Filesystem
 Summary(pl):	AFS - wirtualny system plików
 Name:		avfs
-Version:	0.9.6
+Version:	0.9.7
 Release:	0.1
 License:	GPL
 Group:		Libraries
 Source0:	http://dl.sourceforge.net/avf/%{name}-%{version}.tar.gz
-# Source0-md5:	59829701fb2d7593ed7c1de9e0a5ac63
+# Source0-md5:	88da3489b1c1d80d080ce780333cedef
 URL:		http://sourceforge.net/projects/avf/
 BuildRequires:	automake
 BuildRequires:	expat-devel
@@ -37,6 +37,32 @@ sesje FTP, http, webdav, rsh/rcp, ssh/scp. Jest te¿ trochê innych
 procedur obs³ugi zaimplementowanych z u¿yciem extfs (zewnêtrznych
 systemów plików) Midnight Commandera.
 
+%package devel
+Summary:        Header files for avfs library
+Summary(pl):    Pliki nag³ówkowe bibliotek avfs
+Group:          Development/Libraries
+Requires:       %{name} = %{version}-%{release}
+
+%description devel
+The avfs-devel package includes the header files necessary for
+developing programs using the avfs libraries.
+
+%description devel -l pl
+Pakiet avfs-devel zawiera pliki nag³ówkowe niezbêdne do budowania
+programów u¿ywaj±cych bibliotek avfs.
+
+%package static
+Summary:        Static avfs libraries
+Summary(pl):    Statyczne biblioteki avfs
+Group:          Development/Libraries
+Requires:       %{name} = %{version}-%{release}
+
+%description static
+This package contains the static version of avfs libraries.
+
+%description static -l pl
+Ten pakiet zawiera statyczn± wersjê bibliotek avfs.
+
 %prep
 %setup -q
 
@@ -44,12 +70,13 @@ systemów plików) Midnight Commandera.
 install /usr/share/automake/config.* .
 
 %configure \
-	--enable-preload \
+	--enable-library \
 	--enable-xml \
 	--with-neon \
 	--with-ssl \
+	--disable-fast-install \
 	--with-kernel=%{_kernelsrcdir}
-#        --enable-dav 
+#        --enable-dav
 # Comment:
 # I've no idea how to build this package with dav option with expat-devel.
 %{__make}
@@ -73,3 +100,13 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/davpass
 %attr(755,root,root) %{_bindir}/ftppass
 %{_libdir}/%{name}
+
+%files devel
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_bindir}/avfs-config
+%{_includedir}/*.h
+%{_libdir}/*.la
+
+%files static
+%defattr(644,root,root,755)
+%{_libdir}/*.a
