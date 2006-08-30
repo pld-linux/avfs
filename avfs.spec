@@ -38,10 +38,10 @@ procedur obs³ugi zaimplementowanych z u¿yciem extfs (zewnêtrznych
 systemów plików) Midnight Commandera.
 
 %package devel
-Summary:        Header files for avfs library
-Summary(pl):    Pliki nag³ówkowe bibliotek avfs
-Group:          Development/Libraries
-Requires:       %{name} = %{version}-%{release}
+Summary:	Header files for avfs library
+Summary(pl):	Pliki nag³ówkowe bibliotek avfs
+Group:		Development/Libraries
+Requires:	%{name} = %{version}-%{release}
 
 %description devel
 The avfs-devel package includes the header files necessary for
@@ -52,10 +52,10 @@ Pakiet avfs-devel zawiera pliki nag³ówkowe niezbêdne do budowania
 programów u¿ywaj±cych bibliotek avfs.
 
 %package static
-Summary:        Static avfs libraries
-Summary(pl):    Statyczne biblioteki avfs
-Group:          Development/Libraries
-Requires:       %{name} = %{version}-%{release}
+Summary:	Static avfs libraries
+Summary(pl):	Statyczne biblioteki avfs
+Group:		Development/Libraries
+Requires:	%{name} = %{version}-%{release}
 
 %description static
 This package contains the static version of avfs libraries.
