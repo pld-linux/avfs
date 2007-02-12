@@ -2,7 +2,7 @@
 # do --enable-dav switch
 
 Summary:	AFS - A Virtual Filesystem
-Summary(pl):	AFS - wirtualny system plików
+Summary(pl.UTF-8):   AFS - wirtualny system plikÃ³w
 Name:		avfs
 Version:	0.9.7
 Release:	0.1
@@ -27,19 +27,19 @@ and rar files, FTP sessions, http, webdav, rsh/rcp, ssh/scp. Quite a
 few other handlers are implemented with the Midnight Commander's
 external FS.
 
-%description -l pl
-AVFS to system, który umo¿liwia wszystkim programom zagl±danie do
-zarchiwizowanych lub skompresowanych plików lub dostêp do zdanych
-plików bez rekompilacji programów lub zmiany j±dra.
+%description -l pl.UTF-8
+AVFS to system, ktÃ³ry umoÅ¼liwia wszystkim programom zaglÄ…danie do
+zarchiwizowanych lub skompresowanych plikÃ³w lub dostÄ™p do zdanych
+plikÃ³w bez rekompilacji programÃ³w lub zmiany jÄ…dra.
 
-Aktualnie obs³uguje dyskietki, pliki tar, gzip, zip, bzip2, ar i rar,
-sesje FTP, http, webdav, rsh/rcp, ssh/scp. Jest te¿ trochê innych
-procedur obs³ugi zaimplementowanych z u¿yciem extfs (zewnêtrznych
-systemów plików) Midnight Commandera.
+Aktualnie obsÅ‚uguje dyskietki, pliki tar, gzip, zip, bzip2, ar i rar,
+sesje FTP, http, webdav, rsh/rcp, ssh/scp. Jest teÅ¼ trochÄ™ innych
+procedur obsÅ‚ugi zaimplementowanych z uÅ¼yciem extfs (zewnÄ™trznych
+systemÃ³w plikÃ³w) Midnight Commandera.
 
 %package devel
 Summary:	Header files for avfs library
-Summary(pl):	Pliki nag³ówkowe bibliotek avfs
+Summary(pl.UTF-8):   Pliki nagÅ‚Ã³wkowe bibliotek avfs
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 
@@ -47,21 +47,21 @@ Requires:	%{name} = %{version}-%{release}
 The avfs-devel package includes the header files necessary for
 developing programs using the avfs libraries.
 
-%description devel -l pl
-Pakiet avfs-devel zawiera pliki nag³ówkowe niezbêdne do budowania
-programów u¿ywaj±cych bibliotek avfs.
+%description devel -l pl.UTF-8
+Pakiet avfs-devel zawiera pliki nagÅ‚Ã³wkowe niezbÄ™dne do budowania
+programÃ³w uÅ¼ywajÄ…cych bibliotek avfs.
 
 %package static
 Summary:	Static avfs libraries
-Summary(pl):	Statyczne biblioteki avfs
+Summary(pl.UTF-8):   Statyczne biblioteki avfs
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 
 %description static
 This package contains the static version of avfs libraries.
 
-%description static -l pl
-Ten pakiet zawiera statyczn± wersjê bibliotek avfs.
+%description static -l pl.UTF-8
+Ten pakiet zawiera statycznÄ… wersjÄ™ bibliotek avfs.
 
 %prep
 %setup -q
