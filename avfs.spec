@@ -2,7 +2,7 @@
 # do --enable-dav switch
 
 Summary:	AFS - A Virtual Filesystem
-Summary(pl.UTF-8):   AFS - wirtualny system plików
+Summary(pl.UTF-8):	AFS - wirtualny system plików
 Name:		avfs
 Version:	0.9.7
 Release:	0.1
@@ -39,7 +39,7 @@ systemów plików) Midnight Commandera.
 
 %package devel
 Summary:	Header files for avfs library
-Summary(pl.UTF-8):   Pliki nagłówkowe bibliotek avfs
+Summary(pl.UTF-8):	Pliki nagłówkowe bibliotek avfs
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 
@@ -53,7 +53,7 @@ programów używających bibliotek avfs.
 
 %package static
 Summary:	Static avfs libraries
-Summary(pl.UTF-8):   Statyczne biblioteki avfs
+Summary(pl.UTF-8):	Statyczne biblioteki avfs
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 
