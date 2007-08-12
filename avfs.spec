@@ -4,17 +4,18 @@
 Summary:	AFS - A Virtual Filesystem
 Summary(pl.UTF-8):	AFS - wirtualny system plików
 Name:		avfs
-Version:	0.9.7
+Version:	0.9.8
 Release:	0.1
 License:	GPL
 Group:		Libraries
 Source0:	http://dl.sourceforge.net/avf/%{name}-%{version}.tar.gz
-# Source0-md5:	88da3489b1c1d80d080ce780333cedef
+# Source0-md5:	cd1d5c3616124bc8397936718cc0d651
 URL:		http://sourceforge.net/projects/avf/
 BuildRequires:	automake
 BuildRequires:	expat-devel
 BuildRequires:	neon-devel
 BuildRequires:	openssl-devel >= 0.9.7d
+BuildRequires:	libfuse-devel >= 0:2.4
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -75,6 +76,7 @@ install /usr/share/automake/config.* .
 	--with-neon \
 	--with-ssl \
 	--disable-fast-install \
+	--enable-fuse \
 	--with-kernel=%{_kernelsrcdir}
 #        --enable-dav
 # Comment:
@@ -95,10 +97,13 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc README
+%doc README doc/README.avfs-fuse
 %attr(755,root,root) %{_libdir}/*.so.*.*
+%attr(755,root,root) %{_bindir}/avfsd
 %attr(755,root,root) %{_bindir}/davpass
 %attr(755,root,root) %{_bindir}/ftppass
+%attr(755,root,root) %{_bindir}/mountavfs
+%attr(755,root,root) %{_bindir}/umountavfs
 %{_libdir}/%{name}
 
 %files devel
