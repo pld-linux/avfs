@@ -1,8 +1,8 @@
 # TODO
 # do --enable-dav switch
 
-Summary:	AFS - A Virtual Filesystem
-Summary(pl.UTF-8):	AFS - wirtualny system plików
+Summary:	AVFS - A Virtual Filesystem
+Summary(pl.UTF-8):	AVFS - wirtualny system plików
 Name:		avfs
 Version:	0.9.8
 Release:	0.1
@@ -12,10 +12,10 @@ Source0:	http://dl.sourceforge.net/avf/%{name}-%{version}.tar.gz
 # Source0-md5:	cd1d5c3616124bc8397936718cc0d651
 URL:		http://sourceforge.net/projects/avf/
 BuildRequires:	automake
-BuildRequires:	expat-devel
-BuildRequires:	neon-devel
-BuildRequires:	openssl-devel >= 0.9.7d
 BuildRequires:	libfuse-devel >= 0:2.4
+#BuildRequires:	neon-devel >= 0.12
+#BuildRequires:	neon-devel < 0.13
+BuildRequires:	openssl-devel >= 0.9.7d
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -40,47 +40,42 @@ systemów plików) Midnight Commandera.
 
 %package devel
 Summary:	Header files for avfs library
-Summary(pl.UTF-8):	Pliki nagłówkowe bibliotek avfs
+Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki avfs
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 
 %description devel
 The avfs-devel package includes the header files necessary for
-developing programs using the avfs libraries.
+developing programs using the avfs library.
 
 %description devel -l pl.UTF-8
 Pakiet avfs-devel zawiera pliki nagłówkowe niezbędne do budowania
-programów używających bibliotek avfs.
+programów używających biblioteki avfs.
 
 %package static
-Summary:	Static avfs libraries
-Summary(pl.UTF-8):	Statyczne biblioteki avfs
+Summary:	Static avfs library
+Summary(pl.UTF-8):	Statyczna biblioteka avfs
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 
 %description static
-This package contains the static version of avfs libraries.
+This package contains the static version of avfs library.
 
 %description static -l pl.UTF-8
-Ten pakiet zawiera statyczną wersję bibliotek avfs.
+Ten pakiet zawiera statyczną wersję biblioteki avfs.
 
 %prep
 %setup -q
 
 %build
-install /usr/share/automake/config.* .
-
+cp -f /usr/share/automake/config.* .
 %configure \
-	--enable-library \
-	--enable-xml \
-	--with-neon \
-	--with-ssl \
-	--disable-fast-install \
+	--disable-avfscoda \
 	--enable-fuse \
-	--with-kernel=%{_kernelsrcdir}
-#        --enable-dav
+	--enable-library \
+	--with-ssl
 # Comment:
-# I've no idea how to build this package with dav option with expat-devel.
+# I've no idea how to build this package with dav option with expat-devel  --blekot
 %{__make}
 
 %install
@@ -98,7 +93,7 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc README doc/README.avfs-fuse
-%attr(755,root,root) %{_libdir}/*.so.*.*
+%attr(755,root,root) %{_libdir}/libavfs.so.*.*.*
 %attr(755,root,root) %{_bindir}/avfsd
 %attr(755,root,root) %{_bindir}/davpass
 %attr(755,root,root) %{_bindir}/ftppass
@@ -109,9 +104,10 @@ rm -rf $RPM_BUILD_ROOT
 %files devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/avfs-config
+%attr(755,root,root) %{_libdir}/libavfs.so
+%{_libdir}/libavfs.la
 %{_includedir}/*.h
-%{_libdir}/*.la
 
 %files static
 %defattr(644,root,root,755)
-%{_libdir}/*.a
+%{_libdir}/libavfs.a
