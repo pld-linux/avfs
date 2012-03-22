@@ -4,12 +4,13 @@
 Summary:	AVFS - A Virtual Filesystem
 Summary(pl.UTF-8):	AVFS - wirtualny system plików
 Name:		avfs
-Version:	0.9.8
-Release:	0.1
+Version:	1.0.0
+Release:	1
 License:	GPL
 Group:		Libraries
 Source0:	http://dl.sourceforge.net/avf/%{name}-%{version}.tar.gz
-# Source0-md5:	cd1d5c3616124bc8397936718cc0d651
+# Source0-md5:	be6dd4417c3e96a294f1539ad22fddc9
+Patch0:		%{name}-unrar.c.patch
 URL:		http://sourceforge.net/projects/avf/
 BuildRequires:	automake
 BuildRequires:	libfuse-devel >= 0:2.4
@@ -66,6 +67,7 @@ Ten pakiet zawiera statyczną wersję biblioteki avfs.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 cp -f /usr/share/automake/config.* .
@@ -94,6 +96,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc README doc/README.avfs-fuse
 %attr(755,root,root) %{_libdir}/libavfs.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}libavfs.so.0
 %attr(755,root,root) %{_bindir}/avfsd
 %attr(755,root,root) %{_bindir}/davpass
 %attr(755,root,root) %{_bindir}/ftppass
