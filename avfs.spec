@@ -96,7 +96,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc README doc/README.avfs-fuse
 %attr(755,root,root) %{_libdir}/libavfs.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}libavfs.so.0
+%attr(755,root,root) %ghost %{_libdir}/libavfs.so.0
 %attr(755,root,root) %{_bindir}/avfsd
 %attr(755,root,root) %{_bindir}/davpass
 %attr(755,root,root) %{_bindir}/ftppass

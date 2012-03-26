@@ -37,3 +37,14 @@ diff -ur avfs-1.0.0.old/src/sysdeps.c avfs-1.0.0/src/sysdeps.c
          filelog(buf);
      AV_UNLOCK(loglock);
 Only in avfs-1.0.0/src: sysdeps.c~
+--- avfs-1.0.0/libneon/hip_xml.c.old	2012-03-23 15:36:04.000000000 +0000
++++ avfs-1.0.0/libneon/hip_xml.c	2012-03-23 15:36:20.000000000 +0000
+@@ -40,7 +40,7 @@
+ 
+ /******** Expat ***********/
+ 
+-# include "xmlparse.h"
++# include "expat.h"
+ typedef XML_Char hip_xml_char;
+ 
+ #else /* not HAVE_EXPAT */
