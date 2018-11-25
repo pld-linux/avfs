@@ -4,19 +4,24 @@
 Summary:	AVFS - A Virtual Filesystem
 Summary(pl.UTF-8):	AVFS - wirtualny system plików
 Name:		avfs
-Version:	1.0.0
+Version:	1.0.6
 Release:	1
-License:	GPL
+License:	GPL v2+
 Group:		Libraries
-Source0:	http://dl.sourceforge.net/avf/%{name}-%{version}.tar.gz
-# Source0-md5:	be6dd4417c3e96a294f1539ad22fddc9
-Patch0:		%{name}-unrar.c.patch
+Source0:	http://downloads.sourceforge.net/avf/%{name}-%{version}.tar.bz2
+# Source0-md5:	ad04a13afc4c01a50b7c945602926ce7
 URL:		http://sourceforge.net/projects/avf/
+BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
-BuildRequires:	libfuse-devel >= 0:2.4
-#BuildRequires:	neon-devel >= 0.12
-#BuildRequires:	neon-devel < 0.13
-BuildRequires:	openssl-devel >= 0.9.7d
+BuildRequires:	bzip2-devel
+BuildRequires:	libfuse-devel >= 2.6.0
+BuildRequires:	libtool
+BuildRequires:	openssl-devel
+BuildRequires:	pkgconfig
+BuildRequires:	xz-devel
+BuildRequires:	zlib-devel
+BuildRequires:	zstd-devel
+Requires:	libfuse >= 2.6.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -67,15 +72,26 @@ Ten pakiet zawiera statyczną wersję biblioteki avfs.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
-cp -f /usr/share/automake/config.* .
+%{__libtoolize}
+%{__aclocal}
+%{__autoconf}
+%{__autoheader}
+%{__automake}
 %configure \
+	EMACS=%{_bindir}/emacs \
+	PERL=%{_bindir}/perl \
+	ZIP=%{_bindir}/zip \
+	UNZIP=%{_bindir}/unzip \
 	--disable-avfscoda \
+	--disable-dav \
 	--enable-fuse \
 	--enable-library \
-	--with-ssl
+	--with-system-bzlib \
+	--with-system-zlib \
+	--with-xz \
+	--with-zstd
 # Comment:
 # I've no idea how to build this package with dav option with expat-devel  --blekot
 %{__make}
