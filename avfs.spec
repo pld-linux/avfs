@@ -4,12 +4,12 @@
 Summary:	AVFS - A Virtual Filesystem
 Summary(pl.UTF-8):	AVFS - wirtualny system plików
 Name:		avfs
-Version:	1.1.2
+Version:	1.1.3
 Release:	1
 License:	GPL v2+
 Group:		Libraries
 Source0:	http://downloads.sourceforge.net/avf/%{name}-%{version}.tar.bz2
-# Source0-md5:	001b3cf8d9a8fb81e3270114f8b5ecc0
+# Source0-md5:	a2bfa82748c2d3ecb40a5df71ecf136d
 URL:		http://sourceforge.net/projects/avf/
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
